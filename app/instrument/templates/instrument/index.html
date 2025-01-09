@@ -1,9 +1,42 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     My Instruments
 {% endblock %}
 
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'instrument/index.css' %}"/>
+{% endblock %}
+
 {% block content %}
-    <h1>Welcome to Instruments</h1>
+    <header id="main-navigation">
+        <h1><a href="">Instrument Page</a></h1>
+        <nav>
+            <a href="">All Instruments Page</a>
+        </nav>
+    </header>
+
+    <section id="welcome">
+        <header>
+            <img src="" alt="Instrument Dpt"/>
+            <h2>Instrument Dpt</h2>
+        </header>
+        <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+    </section>
+
+    <section id="latest-posts">
+        <ul>
+            <li>
+                <div class="post__content">
+                    <h3>11-FT-01</h3>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2>Details</h2>
+        <p>Details about the page</p>
+    </section>
 {% endblock %}
