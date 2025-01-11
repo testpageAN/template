@@ -23,8 +23,9 @@ class Listing(models.Model):
     is_active = models.BooleanField(default=True)
     history = models.TextField()
     data_sheet = models.FileField(upload_to="data_sheets/",
-                                  blank=True, null=True)  # Ανέβασμα αρχείου PDF
-    photo_main = models.ImageField(upload_to="photos/%Y/%m/%d/", blank=True, null=True)
+                                  blank=True, null=True)
+    photo_main = models.ImageField(upload_to="photos/%Y/%m/%d/",
+                                   blank=True, null=True)
 
     @property
     def next_check(self):
