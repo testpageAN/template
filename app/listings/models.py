@@ -20,6 +20,7 @@ class Listing(models.Model):
     interval = models.IntegerField()  # Διάστημα σε ημέρες
     last_checked = models.DateTimeField(default=datetime.now,
                                         blank=True)
+    next_check = models.DateTimeField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     history = models.TextField()
     data_sheet = models.FileField(upload_to="data_sheets/",
@@ -27,12 +28,18 @@ class Listing(models.Model):
     photo_main = models.ImageField(upload_to="photos/%Y/%m/%d/",
                                    blank=True, null=True)
 
-    @property
-    def next_check(self):
-        """Υπολογισμός της επόμενης επιθεώρησης ως last_checked + interval"""
+    # @property
+    # def next_check(self):
+    #     """Υπολογισμός της επόμενης επιθεώρησης ως last_checked + interval"""
+    #     if self.last_checked and self.interval:
+    #         return self.last_checked + timedelta(days=self.interval)
+    #     return None
+
+    def save(self, *args, **kwargs):
+        """Docstring"""
         if self.last_checked and self.interval:
-            return self.last_checked + timedelta(days=self.interval)
-        return None
+            self.next_check = self.last_checked + timedelta(days=self.interval)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.tag
