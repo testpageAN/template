@@ -19,4 +19,3 @@ def logout(request):
 def dashboard(request):
     """Docstring"""
     return render(request, 'accounts/dashboard.html')
-
