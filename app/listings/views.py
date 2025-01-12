@@ -34,17 +34,33 @@ def listing(request, listing_id):
 
 def search(request):
     """Docstring"""
+    queryset_list = (
+        Listing.objects.order_by('next_check')
+        .filter(is_active=True)
+    )
+
+    # Tag
+    if 'tag' in request.GET:
+        tag = request.GET.get('tag')
+        if tag:
+            queryset_list = queryset_list.filter(tag__icontains=tag)
+
+    # Type
+    if 'type' in request.GET:
+        type = request.GET.get('type')
+        if type:
+            queryset_list = queryset_list.filter(type__icontains=type)
+
+    # Foreman
+    if 'foreman' in request.GET:
+        foreman = request.GET.get('foreman')
+        if foreman:
+            queryset_list = queryset_list.filter(foreman__name__iexact=foreman)
 
     context = {
         'foreman_choices': foreman_choices,
         'type_choices': type_choices,
+        'listings': queryset_list,
+        'values': request.GET,
     }
     return render(request, 'listings/search.html', context)
-
-
-# class ListingDetailView(DetailView):
-#     model = Listing
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         return context

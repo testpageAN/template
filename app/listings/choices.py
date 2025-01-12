@@ -1,5 +1,5 @@
 foreman_choices = {
-    "Alex Nikolo": "Alex Nikolo",
+    "Alex Nikol": "Alex Nikol",
     "Helen Helena": "Helen Helena",
     "John Doe": "John Doe",
 }
