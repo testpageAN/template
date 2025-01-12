@@ -1,6 +1,8 @@
 from django.core.paginator import Paginator
-from django.shortcuts import render
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator  # noqa
+from django.shortcuts import render, get_object_or_404
+from django.core.paginator import EmptyPage, PageNotAnInteger  # noqa
+
+from django.views.generic.detail import DetailView  # noqa
 
 from .models import Listing
 
@@ -21,9 +23,22 @@ def index(request):
 
 def listing(request, listing_id):
     """Docstring"""
-    return render(request, 'listings/listing.html')
+    listing = get_object_or_404(Listing, pk=listing_id)
+
+    context = {
+        'listing': listing
+    }
+    return render(request, 'listings/listing.html', context)
 
 
 def search(request):
     """Docstring"""
     return render(request, 'listings/search.html')
+
+
+# class ListingDetailView(DetailView):
+#     model = Listing
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return context

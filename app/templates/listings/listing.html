@@ -1,1 +1,203 @@
-<h1>Listing</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+    <section id="showcase-inner" class="py-5 text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h1 class="display-4">{{ listing.tag }}</h1>
+                    <p class="lead">
+                        <i class="fas fa-map-marker"></i> {{ listing.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section id="bc" class="mt-3">
+        <div class="container">
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'listings' %}">Listings</a>
+                    </li>
+                    <li class="breadcrumb-item active">{{ listing.tag }}</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Listing -->
+    <section id="listing" class="py-4">
+        <div class="container">
+            <a href="{% url 'listings' %}" class="btn btn-light mb-4">Back To Listings</a>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Listing Main Image -->
+                    {% if listing.photo_main %}
+                        <img src="{% url 'listing.photo_main' %}" alt="" class="img-main img-fluid mb-3">
+                    {% else %}
+                        <p>No photo</p>
+                    {% endif %}
+                    <!-- Data Sheet -->
+                    {% if listing.data_sheet %}
+                        <div class="row mb-5 thumbs">
+                            <div class="col-md-2">
+                                <a
+                                        href="{% url 'listing.data_sheet' %}"
+                                >
+                                </a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p>No Data Sheet</p>
+                    {% endif %}
+                    <!-- Fields -->
+                    <div class="row mb-5 fields">
+                        <div class="col-md-12">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-secondary">
+                                    ID:
+                                    <span class="float-right">{{ listing.id }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    FOREMAN:
+                                    <span class="float-right">{{ listing.foreman }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    UNIT:
+                                    <span class="float-right">{{ listing.unit }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    LRV-URV, UNITS:
+                                    <span class="float-right">{{ listing.lrv }} - {{ listing.urv }} {{ listing.units }} </span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    MANUFACTURER:
+                                    <span class="float-right">{{ listing.manufacturer }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    MODEL:
+                                    <span class="float-right">{{ listing.model }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    SERIAL No:
+                                    <span class="float-right">{{ listing.serial_no }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    INTERVAL OF CHECKS:
+                                    <span class="float-right">{{ listing.interval }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    LAST CHECKED:
+                                    <span class="float-right">{{ listing.last_checked }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    NEXT CHECK:
+                                    <span class="float-right">{{ listing.next_check }}</span>
+                                </li>
+                                <li class="list-group-item text-secondary">
+                                    IS ACTIVE:
+                                    <span class="float-right">{{ listing.is_active }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <p>History</p>
+                            {{ listing.history }}
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="col-md-12 d-flex justify-content-center">
+            <button
+                    class="btn-primary btn-lg mr-3 mb-4"
+                    data-toggle="modal"
+                    data-target="#inquiryModal"
+            >
+                Make An Inquiry
+            </button>
+            <button
+                    class="btn-primary btn-lg mr-3 mb-4"
+                    data-toggle="modal"
+                    data-target="#inquiryModal"
+            >
+                Make An Inquiry
+            </button>
+        </div>
+    </section>
+
+
+    <!-- Inquiry Modal -->
+    <div class="modal fade" id="inquiryModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="inquiryModalLabel">Make An Inquiry</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="property_name" class="col-form-label"
+                            >Property:</label
+                            >
+                            <input
+                                    type="text"
+                                    name="listing"
+                                    class="form-control"
+                                    value="45 Drivewood Cirlce"
+                                    disabled
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" name="name" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-form-label">Email:</label>
+                            <input
+                                    type="email"
+                                    name="email"
+                                    class="form-control"
+                                    required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-form-label">Phone:</label>
+                            <input type="text" name="phone" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="col-form-label">Message:</label>
+                            <textarea name="message" class="form-control"></textarea>
+                        </div>
+                        <hr />
+                        <input
+                                type="submit"
+                                value="Send"
+                                class="btn btn-block btn-secondary"
+                        />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

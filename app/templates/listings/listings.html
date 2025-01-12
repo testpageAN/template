@@ -68,7 +68,9 @@
                         <td>{{ listing.next_check }}</td>
                         <td>{{ listing.is_active }}</td>
                         <td>{{ listing.foreman }}</td>
-                        <td><a href="{% url 'listing' listing.id %}">Details/Edit</a></td>
+                        <td>
+                            <a class="btn btn-primary" href="{% url 'listing' listing.id %}">Details/Edit</a>
+                        </td>
                         <td><a href="#">Delete</a></td>
                     </tr>
                 {% endfor %}
