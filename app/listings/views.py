@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import EmptyPage, PageNotAnInteger  # noqa
 
 from django.views.generic.detail import DetailView  # noqa
+from .choices import foreman_choices, type_choices
 
 from .models import Listing
 
@@ -33,7 +34,12 @@ def listing(request, listing_id):
 
 def search(request):
     """Docstring"""
-    return render(request, 'listings/search.html')
+
+    context = {
+        'foreman_choices': foreman_choices,
+        'type_choices': type_choices,
+    }
+    return render(request, 'listings/search.html', context)
 
 
 # class ListingDetailView(DetailView):

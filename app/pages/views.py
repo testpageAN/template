@@ -3,6 +3,8 @@ from django.shortcuts import render
 from listings.models import Listing
 from foremen.models import Foreman
 
+from listings.choices import foreman_choices, type_choices
+
 
 def index(request):
     """Docstring"""
@@ -12,7 +14,9 @@ def index(request):
     )
 
     context = {
-        'listings': listings
+        'listings': listings,
+        'foreman_choices': foreman_choices,
+        'type_choices': type_choices,
     }
     return render(request, 'pages/index.html', context)
 

@@ -6188,7 +6188,8 @@ a.text-primary:hover, a.text-primary:focus {
   color: #071224 !important; }
 
 .text-secondary {
-  color: #30caa0 !important; }
+  /*color: #30caa0 !important; }*/
+  color: #343a40 !important; }
 
 a.text-secondary:hover, a.text-secondary:focus {
   color: #26a17f !important; }
