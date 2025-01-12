@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'pages',
     'listings',
     'foremen',
+    'django.contrib.humanize',
+    'accounts',
 ]
 
 MIDDLEWARE = [
