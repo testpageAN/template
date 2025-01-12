@@ -24,11 +24,15 @@ div.breadcrumbs a {
 }
 
 .module h2, .module caption, .inline-group h2 {
-  background: #45874d;
+  background: #30caa0;
   color: #10284e;
 }
 
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
   background: #10284e;
   color: #fff;
+}
+
+a.section:link, a.section:visited {
+    color: #10284e;
 }
