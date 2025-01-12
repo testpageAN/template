@@ -28,56 +28,63 @@
     </section>
 
     <!-- Correct Listings -->
-    <table class="table table-sm table-bordered table-hover table-striped">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">id</th>
-            <th scope="col">TAG</th>
-            <th scope="col">DESCRIPTION</th>
-            <th scope="col">TYPE</th>
-            <th scope="col">LRV</th>
-            <th scope="col">URV</th>
-            <th scope="col">UNITS</th>
-            <th scope="col">MANUFACTURER</th>
-            <th scope="col">INTERVAL</th>
-            <th scope="col">LAST_CHECKED</th>
-            <th scope="col">NEXT_CHECK</th>
-            <th scope="col">IS_ACTIVE</th>
-            <th scope="col">FOREMAN</th>
-            <th scope="col">DETAILS/EDIT</th>
-            <th scope="col">DEL</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% if listings %}
-            {% for listing in listings %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ listing.id }}</td>
-                    <td>{{ listing.tag }}</td>
-                    <td>{{ listing.description }}</td>
-                    <td>{{ listing.type }}</td>
-                    <td>{{ listing.lrv }}</td>
-                    <td>{{ listing.urv }}</td>
-                    <td>{{ listing.units }}</td>
-                    <td>{{ listing.manufacturer }}</td>
-                    <td>{{ listing.interval }}</td>
-                    <td>{{ listing.last_checked }}</td>
-                    <td>{{ listing.next_check }}</td>
-                    <td>{{ listing.is_active }}</td>
-                    <td>{{ listing.foreman }}</td>
-                    <td><a href="{% url 'listing' listing.id %}">Details/Edit</a></td>
-                    <td><a href="#">Delete</a></td>
-                </tr>
-            {% endfor %}
-        {% else %}
-            <div class="div col-md-12">
-                <p>No Listings</p>
-            </div>
-        {% endif %}
-        </tbody>
-    </table>
+    {% if listings %}
+        <table class="table table-sm table-bordered table-hover table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">id</th>
+                <th scope="col">TAG</th>
+                <th scope="col">DESCRIPTION</th>
+                <th scope="col">TYPE</th>
+                <th scope="col">LRV</th>
+                <th scope="col">URV</th>
+                <th scope="col">UNITS</th>
+                <th scope="col">MANUFACTURER</th>
+                <th scope="col">INTERVAL</th>
+                <th scope="col">LAST_CHECKED</th>
+                <th scope="col">NEXT_CHECK</th>
+                <th scope="col">IS_ACTIVE</th>
+                <th scope="col">FOREMAN</th>
+                <th scope="col">DETAILS/EDIT</th>
+                <th scope="col">DEL</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if listings %}
+                {% for listing in listings %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ listing.id }}</td>
+                        <td>{{ listing.tag }}</td>
+                        <td>{{ listing.description }}</td>
+                        <td>{{ listing.type }}</td>
+                        <td>{{ listing.lrv }}</td>
+                        <td>{{ listing.urv }}</td>
+                        <td>{{ listing.units }}</td>
+                        <td>{{ listing.manufacturer }}</td>
+                        <td>{{ listing.interval }}</td>
+                        <td>{{ listing.last_checked }}</td>
+                        <td>{{ listing.next_check }}</td>
+                        <td>{{ listing.is_active }}</td>
+                        <td>{{ listing.foreman }}</td>
+                        <td><a href="{% url 'listing' listing.id %}">Details/Edit</a></td>
+                        <td><a href="#">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <div class="div col-md-12">
+                    <p>No Listings</p>
+                </div>
+            {% endif %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="col md 12">
+            <p>No Listings</p>
+        </div>
+    {% endif %}
+
 
     <section>
         <div>
