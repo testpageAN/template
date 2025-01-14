@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib import auth  # noqa
+from django.contrib import auth
 # from django.contrib.auth.models import User  # noqa
 from django.contrib.auth import get_user_model
 
@@ -24,7 +24,10 @@ def register(request):
                 return redirect('register')
             else:
                 # All OK
-                user = User.objects.create_user(email=email, )
+                user = User.objects.create_user(
+                    email=email,
+                    password=password
+                )
                 # Login right after register
                 # auth.login(request, user)
                 # messages.success(request, "You are logged in")
@@ -48,7 +51,19 @@ def login(request):
     """Docstring"""
     if request.method == 'POST':
         #  Login User
-        pass
+        email = request.POST['email']
+        password = request.POST['password']
+        user = auth.authenticate(
+            email=email,
+            password=password
+        )
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, 'You are now logged in')
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'Invalid Credentials')
+            return redirect('login')
     else:
         return render(request, 'accounts/login.html')
 
