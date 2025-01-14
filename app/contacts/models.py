@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+# from listings.models import Listing
 
 
 class Contact(models.Model):

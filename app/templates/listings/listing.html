@@ -33,6 +33,9 @@
         </div>
     </section>
 
+    <!-- Alerts -->
+                {% include 'partials/_alerts.html' %}
+
     <!-- Listing -->
     <section id="listing" class="py-4">
         <div class="container">
@@ -58,6 +61,10 @@
                     {% else %}
                         <p>No Data Sheet</p>
                     {% endif %}
+                
+                <!-- Alerts -->
+                {% include 'partials/_alerts.html' %}
+                
                     <!-- Fields -->
                     <div class="row mb-5 fields">
                         <div class="col-md-12">
@@ -185,7 +192,7 @@
                                     name="listing"
                                     class="form-control"
                                     value="{{ listing.tag }}"
-                                    disabled
+                                    
                             />
                         </div>
                         <div class="form-group">

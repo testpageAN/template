@@ -6,7 +6,8 @@ class ListingAdmin(admin.ModelAdmin):
     list_display = ('id', 'tag', 'description',
                     'type', 'lrv', 'urv',
                     'units', 'manufacturer',
-                    'is_active', 'interval', 'last_checked',
+                    'is_active', 'foreman',
+                    'interval', 'last_checked',
                     'next_check')
     list_display_links = ('id', 'tag')
     list_filter = ('next_check',)
