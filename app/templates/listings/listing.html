@@ -44,7 +44,8 @@
                 <div class="col-md-12">
                     <!-- Listing Main Image -->
                     {% if listing.photo_main %}
-                        <img src="{% url 'listing.photo_main' %}" alt="" class="img-main img-fluid mb-3">
+{#                        <img src="{% url 'listing.photo_main' %}" alt="" class="img-main img-fluid mb-3">#}
+                        <img src="{{ listing.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
                     {% else %}
                         <p>No photo</p>
                     {% endif %}
@@ -53,17 +54,15 @@
                         <div class="row mb-5 thumbs">
                             <div class="col-md-2">
                                 <a
-                                        href="{% url 'listing.data_sheet' %}"
-                                >
+{#                                        href="{% url 'listing.data_sheet' %}"#}
+                                        href="{{ listing.data_sheet }}"
+                                >Data sheet
                                 </a>
                             </div>
                         </div>
                     {% else %}
                         <p>No Data Sheet</p>
                     {% endif %}
-                
-                <!-- Alerts -->
-                {% include 'partials/_alerts.html' %}
                 
                     <!-- Fields -->
                     <div class="row mb-5 fields">
@@ -192,7 +191,6 @@
                                     name="listing"
                                     class="form-control"
                                     value="{{ listing.tag }}"
-                                    
                             />
                         </div>
                         <div class="form-group">
