@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages, auth
+from django.contrib import messages
+from django.contrib import auth  # noqa
 # from django.contrib.auth.models import User  # noqa
 from django.contrib.auth import get_user_model
 
 
-User = get_user_model() # εισαγωγη από το core διοτι εχω κανει αλλαγες εκει σε σχεση με τα defaults.
+# εισαγωγη από το core διοτι εχω κανει αλλαγες εκει σε σχεση με τα defaults.
+User = get_user_model()
 
 
 def register(request):
@@ -30,7 +32,10 @@ def register(request):
 
                 # Login manually
                 user.save()
-                messages.success(request, "You are now registered and can proceed to log in")
+                messages.success(
+                    request,
+                    "You are now registered and can proceed to log in"
+                )
                 return redirect('login')
         else:
             messages.error(request, 'Passwords must match')
