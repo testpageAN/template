@@ -55,7 +55,7 @@
                             <div class="col-md-2">
                                 <a
 {#                                        href="{% url 'listing.data_sheet' %}"#}
-                                        href="{{ listing.data_sheet }}"
+                                        href="{{ listing.data_sheet.url }}"
                                 >Data sheet
                                 </a>
                             </div>
@@ -63,7 +63,7 @@
                     {% else %}
                         <p>No Data Sheet</p>
                     {% endif %}
-                
+
                     <!-- Fields -->
                     <div class="row mb-5 fields">
                         <div class="col-md-12">

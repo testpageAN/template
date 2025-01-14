@@ -151,8 +151,9 @@ AUTH_USER_MODEL = 'core.User'
 
 
 # Media folder settings
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
 
 # Messages
 from django.contrib.messages import constants as messages
