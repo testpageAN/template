@@ -126,6 +126,7 @@
 
     <section>
         <div class="col-md-12 d-flex justify-content-center">
+            {#            to be revised#}
             <button
                     class="btn-primary btn-lg mr-3 mb-4"
                     data-toggle="modal"
@@ -133,12 +134,23 @@
             >
                 Edit
             </button>
+
+            {#            to be revised#}
             <button
                     class="btn-success btn-lg mr-3 mb-4"
                     data-toggle="modal"
                     data-target="#inquiryModal"
             >
                 Save
+            </button>
+
+            {#  Contact button and form#}
+            <button
+                    class="btn-primary btn-lg mr-3 mb-4"
+                    data-toggle="modal"
+                    data-target="#inquiryModal"
+            >
+                Contact
             </button>
         </div>
     </section>
@@ -149,28 +161,41 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="inquiryModalLabel">Make An Inquiry</h5>
+                    <h5 class="modal-title" id="inquiryModalLabel">Report Instrument</h5>
                     <button type="button" class="close" data-dismiss="modal">
                         <span>&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="{% url 'contact' %}" method="POST">
+                        {% csrf_token %}
+                        {% if user.is_authenticated %}
+                            <input type="hidden" name="user_id" value="{{ user.id }}">
+                        {% else %}
+                            <input type="hidden" name="user_id" value="0">
+                        {% endif %}
+                        <input type="hidden" name="foreman_email" value="{{ listing.foreman.email }}">
+                        <input type="hidden" name="listing_id" value="{{ listing.id }}">
                         <div class="form-group">
                             <label for="property_name" class="col-form-label"
-                            >Property:</label
+                            >Instrument Tag:</label
                             >
                             <input
                                     type="text"
                                     name="listing"
                                     class="form-control"
-                                    value="45 Drivewood Cirlce"
+                                    value="{{ listing.tag }}"
                                     disabled
                             />
                         </div>
                         <div class="form-group">
                             <label for="name" class="col-form-label">Name:</label>
-                            <input type="text" name="name" class="form-control" required />
+                            <input
+                                    type="text"
+                                    name="name"
+                                    class="form-control"
+                                    required
+                            />
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-form-label">Email:</label>
@@ -178,6 +203,7 @@
                                     type="email"
                                     name="email"
                                     class="form-control"
+                                    {% if user.is_authenticated %} value="{{ user.email }}" {% endif %}
                                     required
                             />
                         </div>

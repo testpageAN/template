@@ -1,3 +1,6 @@
 from django.shortcuts import render  # noqa
 
-# Create your views here.
+
+def contact(request):
+    """Docstring for contact."""
+    return
