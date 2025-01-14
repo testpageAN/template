@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'foremen',
     'django.contrib.humanize',
     'accounts',
+    'contacts'
 ]
 
 MIDDLEWARE = [
