@@ -7,5 +7,9 @@ urlpatterns = [
     path('<int:listing_id>', views.listing, name='listing'),
     # path('<int:listing_id>', ListingDetailView.as_view(), name='listing'),
     path('search', views.search, name='search'),
-    path('bulk_import', views.bulk_import_listings, name='bulk_import_listings'),
+    path(
+        'bulk_import',
+        views.bulk_import_listings,
+        name='bulk_import_listings'
+    ),
 ]

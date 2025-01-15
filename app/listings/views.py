@@ -98,7 +98,10 @@ def bulk_import_listings(request):
                     try:
                         foreman = Foreman.objects.get(id=row['foreman_id'])
                         if Listing.objects.filter(tag=row['tag']).exists():
-                            errors.append(f"Row {index + 1}: Tag '{row['tag']}' already exists.")
+                            errors.append(
+                                f"Row {index + 1}: Tag '{row['tag']}' "
+                                f"already exists."
+                            )
                             continue
 
                         # Δημιουργία Listing αντικειμένου
@@ -122,15 +125,23 @@ def bulk_import_listings(request):
                         success_count += 1
 
                     except Foreman.DoesNotExist:
-                        errors.append(f"Row {index + 1}: Foreman with ID '{row['foreman_id']}' not found.")
+                        errors.append(
+                            f"Row {index + 1}: Foreman with ID "
+                            f"'{row['foreman_id']}' not found."
+                        )
                     except IntegrityError as e:
-                        errors.append(f"Row {index + 1}: Database error - {str(e)}.")
+                        errors.append(
+                            f"Row {index + 1}: "
+                            f"Database error - {str(e)}."
+                        )
                     except Exception as e:
                         errors.append(f"Row {index + 1}: {str(e)}")
 
                 # Εμφάνιση μηνυμάτων επιτυχίας και σφαλμάτων
                 if success_count:
-                    messages.success(request, f"Successfully imported {success_count} listings.")
+                    messages.success(
+                        request,
+                        f"Successfully imported {success_count} listings.")
                 if errors:
                     for error in errors:
                         messages.warning(request, error)
