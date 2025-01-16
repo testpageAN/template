@@ -1,11 +1,42 @@
 {% extends 'base.html' %}
 
+{% block title %} | Bulk Import {% endblock %}
+
 {% block content %}
+
+    <section id="showcase-inner" class="py-5 text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h1 class="display-4">Browse Our Properties</h1>
+                    <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section id="bc" class="mt-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'index' %}">
+                            <i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="breadcrumb-item active"> Browse Listings</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+
+        <div class="container mb-4">
     <h2>Bulk Import Listings</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Upload File</button>
+        <button class="btn btn-primary" type="submit">Upload File</button>
     </form>
     {% if messages %}
         <ul>
@@ -14,4 +45,5 @@
             {% endfor %}
         </ul>
     {% endif %}
+    </div>
 {% endblock %}
