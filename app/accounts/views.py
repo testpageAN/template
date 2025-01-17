@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib import auth
 # from django.contrib.auth.models import User  # noqa
 from django.contrib.auth import get_user_model
+from contacts.models import Contact
 
 
 # εισαγωγη από το core διοτι εχω κανει αλλαγες εκει σε σχεση με τα defaults.
@@ -78,4 +79,15 @@ def logout(request):
 
 def dashboard(request):
     """Docstring"""
-    return render(request, 'accounts/dashboard.html')
+    user_contacts = Contact.objects.order_by(
+        '-contact_date').filter(
+        user_id=request.user.id
+    )
+
+    context = {
+        'contacts': user_contacts
+    }
+    return render(
+        request,
+        'accounts/dashboard.html',
+        context)
