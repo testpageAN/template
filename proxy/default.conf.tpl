@@ -6,7 +6,7 @@ server {
     }
 
     location /media/ {
-    alias /vol/web/media/;
+    alias /vol/media/;
     autoindex on;
 }
 
