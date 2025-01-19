@@ -18,6 +18,8 @@ RUN mkdir -p /vol/static && \
     chmod +x /run.sh
 
 VOLUME /vol/static
+#from AI
+VOLUME /vol/web/media
 
 USER nginx
 

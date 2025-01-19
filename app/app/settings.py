@@ -141,7 +141,6 @@ USE_TZ = True
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_ROOT = '/vol/web/static'
-# STATIC_URL = '/static/'
 STATIC_URL = '/static/static/'
 
 STATICFILES_DIRS = [
@@ -157,11 +156,9 @@ AUTH_USER_MODEL = 'core.User'
 
 
 # Media folder settings
-# MEDIA_URL = '/media/'
 MEDIA_URL = '/media/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = 'vol/web/media'
-# MEDIA_URL = '/media/'
 
 # Messages
 from django.contrib.messages import constants as messages
@@ -175,3 +172,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'my_gmail_mail'
 EMAIL_HOST_PASSWORD = 'my_gmail_password'
 EMAIL_USE_TLS = True
+
+# Ρυθμίσεις μεγέθους αρχείων
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760  # π.χ. 10MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # π.χ. 10MB
