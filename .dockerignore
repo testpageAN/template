@@ -13,3 +13,7 @@ app/*/*/*/__pycache__/
 .env.sample/
 .venv/
 venv/
+
+app/pages/static/
+app/static/
+media/
