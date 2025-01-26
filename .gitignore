@@ -172,6 +172,7 @@ cython_debug/
 .pypirc
 
 /static
+app/pages/static
 /media
 
 .env

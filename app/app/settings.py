@@ -139,13 +139,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# είναι ο φάκελος στον οποίο το Django θα συλλέξει όλα τα
+# static files όταν τρέξεις την εντολή python
+# manage.py collectstatic
 STATIC_ROOT = '/vol/web/static'
-# STATIC_URL = '/static/'
+
+# είναι το URL prefix που χρησιμοποιείται για να προσπελαστούν
+# τα static files μέσω του browser.
 STATIC_URL = '/static/static/'
 
+# Είναι ο φάκελος με τα static που κρατώ (στέλνω και Git).
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'app/static')
+    os.path.join(BASE_DIR, 'static')
 ]
 
 # Default primary key field type
@@ -158,7 +163,7 @@ AUTH_USER_MODEL = 'core.User'
 
 # Media folder settings
 # MEDIA_URL = '/media/'
-MEDIA_URL = '/media/media/'
+MEDIA_URL = '/static/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = 'vol/web/media'
 # MEDIA_URL = '/media/'
