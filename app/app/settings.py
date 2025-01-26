@@ -150,7 +150,7 @@ STATIC_URL = '/static/static/'
 
 # Είναι ο φάκελος με τα static που κρατώ (στέλνω και Git).
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'app/static')
 ]
 
 # Default primary key field type
@@ -165,7 +165,7 @@ AUTH_USER_MODEL = 'core.User'
 # MEDIA_URL = '/media/'
 MEDIA_URL = '/static/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_ROOT = 'vol/web/media'
+MEDIA_ROOT = '/vol/web/media'
 # MEDIA_URL = '/media/'
 
 # Messages
