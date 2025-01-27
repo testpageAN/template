@@ -10,8 +10,9 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app
-      - dev-static-data:/vol/web
-      - dev-media-data:/vol/web  # δυο ιδια μαλλον δεν γίνονται αποδεκτα
+      - dev-static-data:/vol/web  # template_static-data in docker (9 days ago, media= empty, static = OK)
+      - dev-media-data:/vol/web  # template_dev-media-data in docker (8 days ago, media->data sheets & photos OK)
+      #  and static (=empty)
     command: >
       sh -c "python manage.py wait_for_db &&
               python manage.py migrate &&
